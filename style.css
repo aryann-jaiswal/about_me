@@ -5,9 +5,11 @@
   --primary-color: #2c3e50;
   --secondary-color: #e74c3c;
   --text-color: #333;
-  --background-light: #f5f6fa;
-  --background-dark: #2c3e50;
-  --transition-speed: 0.3s;
+  --background-light: #ffffff;
+  --background-dark: #1a1a1a;
+  --section-light: #ffffff;
+  --section-dark: #2c2c2c;
+  --transition-speed: 0.5s;
 }
 
 * {
@@ -21,12 +23,12 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-light);
-  transition: background-color var(--transition-speed);
+  transition: all var(--transition-speed) ease;
 }
 
 body.dark-mode {
   background-color: var(--background-dark);
-  color: #fff;
+  color: #ffffff;
 }
 
 header {
@@ -34,6 +36,11 @@ header {
   padding: 4rem 2rem;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
 }
 
 h1 {
@@ -54,12 +61,17 @@ main {
 }
 
 .profile-section {
-  background: white;
+  background: var(--section-light);
   border-radius: 10px;
   padding: 2rem;
   margin-bottom: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed);
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-mode .profile-section {
+  background: var(--section-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .profile-section:hover {
@@ -69,6 +81,11 @@ main {
 h2 {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  transition: color var(--transition-speed) ease;
+}
+
+body.dark-mode h2 {
+  color: #ffffff;
 }
 
 #toggle-btn {
@@ -81,11 +98,21 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color var(--transition-speed);
+  transition: all var(--transition-speed) ease;
 }
 
 #toggle-btn:hover {
   background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+body.dark-mode #toggle-btn {
+  background-color: #ffffff;
+  color: var(--background-dark);
+}
+
+body.dark-mode #toggle-btn:hover {
+  background-color: #e0e0e0;
 }
 
 /* Responsive Design */
@@ -101,4 +128,49 @@ h2 {
   .profile-section {
     padding: 1.5rem;
   }
+}
+
+.content-block {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-mode .content-block {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.content-block h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+body.dark-mode .content-block h3 {
+  color: #ffffff;
+}
+
+.content-block ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.content-block li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.content-block li::before {
+  content: "•";
+  color: var(--secondary-color);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+body.dark-mode .content-block li::before {
+  color: #e74c3c;
 } 
