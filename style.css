@@ -67,6 +67,7 @@ main {
   margin-bottom: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all var(--transition-speed) ease;
+  animation: slideIn 0.5s ease-out;
 }
 
 body.dark-mode .profile-section {
@@ -136,6 +137,8 @@ body.dark-mode #toggle-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
 }
 
 body.dark-mode .content-block {
@@ -173,4 +176,250 @@ body.dark-mode .content-block h3 {
 
 body.dark-mode .content-block li::before {
   color: #e74c3c;
+}
+
+/* Theme Indicator */
+.theme-indicator {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.theme-indicator i {
+  margin: 0 0.5rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.theme-indicator .fa-sun {
+  color: #f1c40f;
+  animation: rotate 10s linear infinite;
+}
+
+.theme-indicator .fa-moon {
+  color: #95a5a6;
+  opacity: 0.5;
+}
+
+body.dark-mode .theme-indicator .fa-sun {
+  opacity: 0.5;
+}
+
+body.dark-mode .theme-indicator .fa-moon {
+  color: #f1c40f;
+  opacity: 1;
+  animation: rotate 10s linear infinite;
+}
+
+/* Icons Styling */
+.content-block i {
+  margin-right: 0.5rem;
+  color: var(--secondary-color);
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-mode .content-block i {
+  color: #e74c3c;
+}
+
+/* Section Transitions */
+#work {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+#play {
+  animation: slideInRight 0.5s ease-out;
+}
+
+/* Animations */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Enhanced Content Blocks */
+.content-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.content-block:hover::before {
+  transform: translateX(100%);
+}
+
+/* Button Enhancement */
+#toggle-btn i {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+#toggle-btn:hover i {
+  transform: rotate(180deg);
+}
+
+/* Day in Life Heading */
+.day-life-heading {
+  margin: 2rem 0;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.day-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleGlow 2s ease-in-out infinite;
+}
+
+body.dark-mode .day-title {
+  background: linear-gradient(45deg, #f1c40f, #e74c3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.day-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  transition: color var(--transition-speed) ease;
+}
+
+body.dark-mode .day-subtitle {
+  color: #ffffff;
+}
+
+.highlight {
+  font-weight: bold;
+  color: var(--secondary-color);
+  transition: color var(--transition-speed) ease;
+  position: relative;
+  display: inline-block;
+}
+
+body.dark-mode .highlight {
+  color: #f1c40f;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.highlight:hover::after {
+  transform: scaleX(1);
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Football Animation */
+.fa-futbol {
+  animation: bounce 1s infinite;
+  color: #2ecc71;
+  margin-right: 0.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(180deg);
+  }
+}
+
+body.dark-mode .fa-futbol {
+  color: #27ae60;
+}
+
+/* Time Link Styling */
+.time-link {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 600;
+}
+
+.time-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.time-link:hover::after {
+  transform: scaleX(1);
+}
+
+.time-link.active {
+  color: var(--secondary-color);
+}
+
+body.dark-mode .time-link.active {
+  color: #f1c40f;
+}
+
+.time-link:hover {
+  opacity: 0.8;
 } 
